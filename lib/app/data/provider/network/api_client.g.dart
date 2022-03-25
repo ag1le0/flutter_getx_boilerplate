@@ -18,34 +18,41 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<Token> login(body) async {
+  Future<CommonResponse<Token>> login(body) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Token>(
+        _setStreamType<CommonResponse<Token>>(
             Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'https://f.com/getToken',
+                .compose(_dio.options, '/getToken',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Token.fromJson(_result.data!);
+    final value = CommonResponse<Token>.fromJson(
+      _result.data!,
+      (json) => Token.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
   @override
-  Future<User> getUserInfo() async {
+  Future<CommonResponse<User>> getUserInfo() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<User>(
-        Options(method: 'POST', headers: _headers, extra: _extra)
-            .compose(_dio.options, '/user_information',
-                queryParameters: queryParameters, data: _data)
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = User.fromJson(_result.data!);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CommonResponse<User>>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/user_information',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CommonResponse<User>.fromJson(
+      _result.data!,
+      (json) => User.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
