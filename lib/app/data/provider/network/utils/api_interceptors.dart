@@ -5,6 +5,9 @@ import 'package:flutter_base/app/services/auth_service.dart';
 import 'package:flutter_base/app/utils/logger.dart';
 import 'package:get/get.dart' hide Response;
 
+import '../../../models/common_response/common_response.dart';
+import 'common_error.dart';
+
 class ApiInterceptors extends InterceptorsWrapper {
   @override
   void onRequest(
@@ -14,7 +17,7 @@ class ApiInterceptors extends InterceptorsWrapper {
     final data = options.data;
     final authService = Get.find<AuthService>();
     final token = authService.token;
-    if (token != null) {
+    if (token != null && options.headers['Authorization'] == null) {
       options.headers['Authorization'] = 'Bearer ${token.accessToken}';
     }
     logger.log(
@@ -43,11 +46,7 @@ class ApiInterceptors extends InterceptorsWrapper {
     final uri = response.requestOptions.uri;
     final data = jsonEncode(response.data);
     logger.log("✅ RESPONSE[$statusCode] => PATH: $uri\n DATA: $data");
-    //Handle section expired
-    if (response.statusCode == 401) {
-      final authService = Get.find<AuthService>();
-      authService.signOut();
-    }
+
     super.onResponse(response, handler);
   }
 
@@ -60,6 +59,37 @@ class ApiInterceptors extends InterceptorsWrapper {
       data = jsonEncode(err.response?.data);
     } catch (e) {}
     logger.log("⚠️ ERROR[$statusCode] => PATH: $uri\n DATA: $data");
-    super.onError(err, handler);
+    if (statusCode == 401) {
+      try {
+        var res = CommonResponse.fromJson(
+          err.response!.data,
+          (json) => null,
+        );
+        if (res.status == 'UNAUTHORIZED' && res.code == 'AUTHENTICATION') {
+          final authService = Get.find<AuthService>();
+          authService.logout();
+          return;
+        }
+      } catch (e) {}
+    }
+    if (err.response != null) {
+      if (err.response!.data['message'] != null) {
+        var res = CommonResponse.fromJson(
+          err.response!.data,
+          (json) => null,
+        );
+        handler.reject(CommonError.fromRes(res));
+        return;
+      }
+      if (err.response!.data['error'] != null) {
+        var res = CommonError(
+            code: err.response!.data['error'],
+            message: err.response!.data['error_description']);
+        handler.reject(res);
+        return;
+      }
+    }
+    handler.reject(CommonError(message: err.toString()));
+    return;
   }
 }

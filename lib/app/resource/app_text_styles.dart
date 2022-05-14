@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 /// Example: bold18White05
 ///
 class AppTextStyles {
+  AppTextStyles._();
+
   static TextStyle title = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,

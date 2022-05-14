@@ -1,8 +1,9 @@
 import 'dart:ui';
 
-import 'package:flutter_base/app/resource/app_strings.dart';
 import 'package:flutter_base/app/utils/prefs_manager.dart';
 import 'package:get/get.dart';
+
+import '../resource/app_strings.dart';
 
 enum StoreKey { locate }
 
@@ -13,13 +14,11 @@ class AppTranslations extends Translations {
   static final langCodes = [
     'en',
     'vi',
-    'zh',
   ];
 
   static const locales = [
     Locale('en', 'US'),
     Locale('vi', 'VN'),
-    Locale('zh', 'CN'),
   ];
 
   static Future<void> changeLocale(String langCode) {
@@ -32,7 +31,6 @@ class AppTranslations extends Translations {
   Map<String, Map<String, String>> get keys => {
         'en_US': enUs,
         'vi_VN': viVn,
-        'zh_CN': zhCN,
       };
 
   static Locale? _getLocaleFromLanguage({String? langCode}) {

@@ -1,7 +1,7 @@
 import 'package:flutter_base/app/data/repository/auth_repository.dart';
 import 'package:get/get.dart';
 
-import 'login_controller.dart';
+import 'controller.dart';
 
 class LoginBinding extends Bindings {
   @override

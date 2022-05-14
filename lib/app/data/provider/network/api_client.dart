@@ -15,7 +15,7 @@ abstract class ApiClient {
   @POST("/getToken")
   Future<CommonResponse<Token>> login(@Body() LoginRequest body);
 
-  @POST("/user_information")
+  @GET("/user_information")
   Future<CommonResponse<User>> getUserInfo();
 
   @POST("/logout")

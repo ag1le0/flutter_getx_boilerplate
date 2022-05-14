@@ -3,46 +3,76 @@ import 'package:flutter_base/app/data/entities/user.dart';
 import 'package:flutter_base/app/ui/routes/app_pages.dart';
 import 'package:get/get.dart';
 
-import 'helper/token_helper.dart';
+import 'helper/auth_helper.dart';
 
 class AuthService extends GetxService {
+  AuthService._internal();
+
+  static final AuthService _singleton = AuthService._internal();
+
+  factory AuthService() {
+    return _singleton;
+  }
+
+  factory AuthService.getInstance() {
+    return _singleton;
+  }
+
   Token? _token;
   User? _user;
 
   Future<AuthService> init() async {
-    final currentToken = await TokenHelper().getToken();
-    _token = currentToken;
-    return this;
+    _token = await AuthHelper().getToken();
+    _user = await AuthHelper().getUser();
+    return _singleton;
   }
 
   /// Handle Token
-  Token? get token => _token;
-
-  void saveToken(Token token) {
-    _token = token;
-    return TokenHelper().saveToken(token);
+  Token? get token {
+    return _token;
   }
 
-  void removeToken() {
+  Future saveToken(Token token, {bool remember = true}) async {
+    _token = token;
+    if (remember) return AuthHelper().saveToken(token);
+  }
+
+  Future deleteToken() async {
     _token = null;
-    return TokenHelper().removeToken();
+    return AuthHelper().removeToken();
   }
 
   /// Handle User
-  User? get user => _user;
-
-  void updateUser(User user) {
-    _user = user;
+  User get user {
+    assert(_user != null, "Login user must provide before use");
+    return _user!;
   }
 
-  void deleteUser() {
+  Future saveUser(User user, {bool remember = true}) async {
+    _user = user;
+    if (remember) return AuthHelper().saveUser(user);
+  }
+
+  Future deleteUser() async {
     _user = null;
+    return AuthHelper().removeUser();
   }
 
   /// SignOut
-  void signOut() async {
-    removeToken();
+  void logout() async {
+    deleteToken();
     deleteUser();
     Get.offAllNamed(Routes.login);
   }
+
+  /// login
+  Future login() async {
+    if (isLogin) {
+      Get.offAllNamed(Routes.home);
+    } else {
+      Get.offAllNamed(Routes.login);
+    }
+  }
+
+  bool get isLogin => _token == null || _user == null;
 }
