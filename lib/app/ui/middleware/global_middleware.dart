@@ -8,6 +8,9 @@ class GlobalMiddleware extends GetMiddleware {
   final AuthService _authService = Get.find();
 
   @override
+  int? get priority => 1;
+
+  @override
   RouteSettings? redirect(String? route) {
     bool authed = _authService.isLogin;
 

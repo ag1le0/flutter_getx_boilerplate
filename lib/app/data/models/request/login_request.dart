@@ -8,8 +8,5 @@ class LoginRequest {
 
   LoginRequest(this.username, this.password);
 
-  factory LoginRequest.fromJson(Map<String, dynamic> json) =>
-      _$LoginRequestFromJson(json);
-
   Map<String, dynamic> toJson() => _$LoginRequestToJson(this);
 }

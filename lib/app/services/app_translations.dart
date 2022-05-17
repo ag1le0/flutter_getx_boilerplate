@@ -29,8 +29,8 @@ class AppTranslations extends Translations {
 
   @override
   Map<String, Map<String, String>> get keys => {
-        'en_US': enUs,
-        'vi_VN': viVn,
+        'en_US': AppStrings.enUs,
+        'vi_VN': AppStrings.viVn,
       };
 
   static Locale? _getLocaleFromLanguage({String? langCode}) {

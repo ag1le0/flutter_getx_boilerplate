@@ -1,6 +1,6 @@
 import 'package:flutter_base/app/data/entities/token.dart';
 import 'package:flutter_base/app/data/entities/user.dart';
-import 'package:flutter_base/app/data/models/login_request.dart';
+import 'package:flutter_base/app/data/models/request/login_request.dart';
 import 'package:flutter_base/app/data/provider/network/utils/api_utils.dart';
 import 'package:flutter_base/app/data/provider/network/utils/common_error.dart';
 

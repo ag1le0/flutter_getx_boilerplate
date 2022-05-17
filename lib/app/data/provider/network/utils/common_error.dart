@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../models/common_response/common_response.dart';
+import '../../../models/response/common_response/common_response.dart';
 import 'deprecated_dio_error.dart';
 
 class CommonError extends DeprecatedDioError {

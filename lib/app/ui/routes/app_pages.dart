@@ -1,10 +1,8 @@
-import 'package:flutter_base/app/ui/middleware/global_middleware.dart';
-import 'package:flutter_base/app/ui/pages/home/binding.dart';
-import 'package:flutter_base/app/ui/pages/home/index.dart';
-import 'package:flutter_base/app/ui/pages/login/binding.dart';
-import 'package:flutter_base/app/ui/pages/login/index.dart';
-import 'package:flutter_base/app/ui/pages/splash/index.dart';
 import 'package:get/get.dart';
+
+import '../bindings/bindings.dart';
+import '../middleware/global_middleware.dart';
+import '../pages/pages.dart';
 
 part './app_routes.dart';
 

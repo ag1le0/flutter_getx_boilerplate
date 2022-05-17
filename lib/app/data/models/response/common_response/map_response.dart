@@ -22,7 +22,4 @@ class MapResponse<T> {
   factory MapResponse.fromJson(
           Map<String, dynamic> json, T Function(Object? json) fromJsonT) =>
       _$MapResponseFromJson(json, fromJsonT);
-
-  Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
-      _$MapResponseToJson(this, toJsonT);
 }

@@ -5,7 +5,7 @@ import 'package:flutter_base/app/services/auth_service.dart';
 import 'package:flutter_base/app/utils/logger.dart';
 import 'package:get/get.dart' hide Response;
 
-import '../../../models/common_response/common_response.dart';
+import '../../../models/response/common_response/common_response.dart';
 import 'common_error.dart';
 
 class ApiInterceptors extends InterceptorsWrapper {

@@ -1,13 +1,16 @@
-const String name = 'Name';
-const String hello = "Hello";
-const String home = "Home";
+class AppStrings {
+  AppStrings._();
+  static const String name = 'Name';
+  static const String hello = "Hello";
+  static const String home = "Home";
 
-final Map<String, String> viVn = {
-  hello: "Hello",
-  home: "Home",
-};
+  static final Map<String, String> viVn = {
+    hello: "Hello",
+    home: "Home",
+  };
 
-final Map<String, String> enUs = {
-  hello: "Hello",
-  home: "Home",
-};
+  static final Map<String, String> enUs = {
+    hello: "Hello",
+    home: "Home",
+  };
+}

@@ -31,7 +31,8 @@ class AuthHelper {
 
   //Get token
   Future<Token?> getToken() async {
-    return await _storage.get(Key.token.name);
+    var res = await _storage.get(Key.token.name);
+    return res != null ? Token.fromJson(res) : null;
   }
 
   //Save user

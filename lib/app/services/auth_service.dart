@@ -74,5 +74,5 @@ class AuthService extends GetxService {
     }
   }
 
-  bool get isLogin => _token == null || _user == null;
+  bool get isLogin => _token != null && _user != null;
 }

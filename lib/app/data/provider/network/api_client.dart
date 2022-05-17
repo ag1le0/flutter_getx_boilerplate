@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_base/app/data/entities/token.dart';
 import 'package:flutter_base/app/data/entities/user.dart';
-import 'package:flutter_base/app/data/models/common_response/common_response.dart';
-import 'package:flutter_base/app/data/models/login_request.dart';
+import 'package:flutter_base/app/data/models/request/login_request.dart';
 import 'package:flutter_base/app/utils/constants.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../models/response/common_response/common_response.dart';
 
 part 'api_client.g.dart';
 
