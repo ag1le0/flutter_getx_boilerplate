@@ -66,7 +66,7 @@ class AuthService extends GetxService {
   }
 
   /// Delete
-  void delete() async {
+  void clear() async {
     deleteToken();
     deleteUser();
   }

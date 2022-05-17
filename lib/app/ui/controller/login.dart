@@ -23,9 +23,9 @@ class LoginController extends GetxController {
     //     remember: remember);
     // _authService.saveUser(await _authRepository.getUserInformation(),
     //     remember: remember);
-
-    _authService.saveToken(Token());
     _authService.saveUser(User());
+    _authService.saveToken(Token());
+
     _authService.login();
   }
 }

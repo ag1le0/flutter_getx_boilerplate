@@ -13,11 +13,17 @@ class HomePage extends GetView<HomeController> {
           title: const Text('Home'),
         ),
         body: Center(
-          child: TextButton(
-              onPressed: () {
-                Get.toNamed(Routes.home + '/1');
-              },
-              child: Text('To user detail')),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.home + '/1');
+                  },
+                  child: Text('To user detail')),
+              TextButton(onPressed: controller.logout, child: Text('Logout')),
+            ],
+          ),
         ));
   }
 }

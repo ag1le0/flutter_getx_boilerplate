@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/app/resource/app_themes.dart';
 import 'package:flutter_base/app/services/app_translations.dart';
@@ -13,8 +12,9 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppThemes.darkTheme,
-      initialRoute: Routes.init,
       getPages: AppPages.pages,
+      initialRoute: Routes.home,
+      unknownRoute: AppPages.notFoundPage,
       locale: AppTranslations.locale,
       fallbackLocale: AppTranslations.fallbackLocale,
       translations: AppTranslations(),
