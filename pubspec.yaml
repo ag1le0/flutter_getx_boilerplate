@@ -9,7 +9,6 @@ dependencies:
   shared_preferences: ^2.0.8
   get: ^4.1.4
   intl: ^0.17.0
-  fluttertoast: ^8.0.7
   dio: ^4.0.1
   retrofit: ^3.0.1+1
   json_serializable: ^6.1.4
