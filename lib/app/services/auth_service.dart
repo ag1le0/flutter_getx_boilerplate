@@ -65,6 +65,12 @@ class AuthService extends GetxService {
     Get.offAllNamed(Routes.login);
   }
 
+  /// Delete
+  void delete() async {
+    deleteToken();
+    deleteUser();
+  }
+
   /// login
   Future login() async {
     if (isLogin) {

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../bindings/bindings.dart';
-import '../middleware/global_middleware.dart';
+import '../middleware/auth_middleware.dart';
 import '../pages/pages.dart';
 
 part './app_routes.dart';
@@ -13,11 +13,25 @@ abstract class AppPages {
         name: Routes.home,
         page: () => const HomePage(),
         binding: HomeBinding(),
-        middlewares: [GlobalMiddleware()]),
+        children: [
+          GetPage(
+              name: '/:id',
+              page: () => const UserDetailPage(),
+              binding: UserDetailBinding(),
+              middlewares: [AuthMiddleware()]),
+        ],
+        middlewares: [
+          AuthMiddleware()
+        ]),
     GetPage(
         name: Routes.login,
         page: () => const LoginPage(),
         binding: LoginBinding(),
-        middlewares: [GlobalMiddleware()]),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: Routes.login,
+        page: () => const LoginPage(),
+        binding: LoginBinding(),
+        middlewares: [AuthMiddleware()]),
   ];
 }

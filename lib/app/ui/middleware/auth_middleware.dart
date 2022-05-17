@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../services/auth_service.dart';
 import '../routes/app_pages.dart';
 
-class GlobalMiddleware extends GetMiddleware {
+class AuthMiddleware extends GetMiddleware {
   final AuthService _authService = Get.find();
 
   @override
@@ -12,13 +12,11 @@ class GlobalMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
-    bool authed = _authService.isLogin;
-
     bool isLoginRoute = (route == Routes.login);
 
-    if (authed) {
+    if (_authService.isLogin) {
       if (isLoginRoute) {
-        _authService.logout();
+        return const RouteSettings(name: Routes.home);
       }
     } else {
       if (!isLoginRoute) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/app/ui/controller/home.dart';
+import 'package:flutter_base/app/ui/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -11,8 +12,12 @@ class HomePage extends GetView<HomeController> {
         appBar: AppBar(
           title: const Text('Home'),
         ),
-        body: const Center(
-          child: Text('No data'),
+        body: Center(
+          child: TextButton(
+              onPressed: () {
+                Get.toNamed(Routes.home + '/1');
+              },
+              child: Text('To user detail')),
         ));
   }
 }
