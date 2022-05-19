@@ -2,9 +2,9 @@
 
 A boilerplate project created in flutter, 
 
-* State Management, Naviagtion and Routing with Getx.
+* State Management, Navigation and Routing with Getx.
 * Handle Rest API with Retrofit and Dio
-* Handle API error with ApiIntercepter
+* Handle API error with ApiInterceptor
 * Json serializable
 * Token manager
 * Resource manager
