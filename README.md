@@ -28,6 +28,8 @@ Go to project root and execute the following command in console to get the requi
 
 ```
 flutter pub get 
+
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 **NOTE**: Don't forget to change the 'app name' and 'package name' in android, ios, pubspec and strings files.
