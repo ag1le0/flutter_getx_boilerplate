@@ -18,9 +18,9 @@ class HomePage extends GetView<HomeController> {
             children: [
               TextButton(
                   onPressed: () {
-                    Get.toNamed(Routes.home + '/1');
+                    Get.toNamed(Routes.user);
                   },
-                  child: Text('To user detail')),
+                  child: const Text('To user page')),
               TextButton(onPressed: controller.logout, child: Text('Logout')),
             ],
           ),
