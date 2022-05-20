@@ -17,7 +17,8 @@ A boilerplate project created in flutter,
 **Step 1:**
 
 Download or clone this repo by using the link below:
-Or simpler, you can click to <b>Use this template</b>
+Or simpler, you can click to <b><a href="/ag1le0/flutter_getx_boilerplate/generate">Use this template</a></b>
+
 ```
 https://github.com/ag1le0/flutter_getx_boilerplate.git
 ```
